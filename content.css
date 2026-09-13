@@ -1,0 +1,37 @@
+.rul-tok {
+  color: #c2410c;
+  border-bottom: 1px dotted rgba(194, 65, 12, 0.6);
+  cursor: help;
+  border-radius: 2px;
+  transition: background 0.1s;
+}
+.rul-tok:hover {
+  background: rgba(194, 65, 12, 0.12);
+}
+
+#rul-bubble {
+  position: absolute;
+  z-index: 2147483647;
+  max-width: 280px;
+  background: #1f2937;
+  color: #fff;
+  padding: 8px 10px;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  font: 13px/1.35 system-ui, -apple-system, Segoe UI, sans-serif;
+  pointer-events: none;
+}
+#rul-bubble .rul-b-ru {
+  font-size: 16px;
+  font-weight: 700;
+  color: #fdba74;
+  margin-bottom: 2px;
+}
+#rul-bubble .rul-b-orig {
+  font-weight: 600;
+}
+#rul-bubble .rul-b-note {
+  opacity: 0.75;
+  font-style: italic;
+  margin-top: 2px;
+}

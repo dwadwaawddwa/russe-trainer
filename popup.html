@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<style>
+  body { width: 260px; margin: 0; font: 14px/1.4 system-ui, Segoe UI, sans-serif; color: #1f2937; }
+  header { background: linear-gradient(135deg,#c2410c,#ea580c); color:#fff; padding:12px 14px; }
+  header h1 { margin:0; font-size:15px; }
+  header p { margin:2px 0 0; font-size:11px; opacity:.85; }
+  .body { padding: 12px 14px; }
+  .row { display:flex; align-items:center; justify-content:space-between; margin:10px 0; }
+  .switch { position:relative; width:42px; height:24px; }
+  .switch input { display:none; }
+  .slider { position:absolute; inset:0; background:#cbd5e1; border-radius:999px; transition:.2s; cursor:pointer; }
+  .slider::before { content:""; position:absolute; width:18px; height:18px; left:3px; top:3px; background:#fff; border-radius:50%; transition:.2s; }
+  input:checked + .slider { background:#16a34a; }
+  input:checked + .slider::before { transform:translateX(18px); }
+  hr { border:none; border-top:1px solid #e5e7eb; margin:12px 0; }
+  label.chk { display:flex; align-items:center; gap:8px; margin:7px 0; cursor:pointer; }
+  .lvl-desc { font-size:11px; color:#6b7280; margin:0 0 0 24px; }
+  #pctVal { font-weight:700; color:#c2410c; }
+  input[type=range] { width:100%; accent-color:#ea580c; }
+  select { width:100%; padding:5px; border:1px solid #cbd5e1; border-radius:6px; }
+  .hint { font-size:11px; color:#6b7280; margin-top:10px; }
+  .hint b { color:#374151; }
+</style>
+</head>
+<body>
+<header>
+  <h1>🌍 Lang Trainer</h1>
+  <p>Apprends une langue en naviguant</p>
+</header>
+<div class="body">
+  <div class="row">
+    <strong>Langue</strong>
+    <select id="lang" style="width:auto;">
+      <option value="ru">🇷🇺 Russe</option>
+      <option value="ja">🇯🇵 Japonais</option>
+    </select>
+  </div>
+
+  <div class="row">
+    <strong>Activer</strong>
+    <label class="switch"><input type="checkbox" id="enabled"><span class="slider"></span></label>
+  </div>
+
+  <hr>
+  <strong style="font-size:12px;color:#6b7280;text-transform:uppercase;">Niveaux</strong>
+
+  <label class="chk"><input type="checkbox" id="levelLetters"> Lettres / sons</label>
+  <p class="lvl-desc" id="descLetters">alphabet &amp; sons (a→а, ch→ш…)</p>
+
+  <label class="chk"><input type="checkbox" id="levelWords"> Mots</label>
+  <p class="lvl-desc" id="descWords">chat→кот, merci→спасибо…</p>
+
+  <label class="chk"><input type="checkbox" id="levelPhrases"> Phrases</label>
+  <p class="lvl-desc" id="descPhrases">au revoir→до свидания…</p>
+
+  <hr>
+  <div id="lettersPct">
+    <div class="row"><strong>Intensité des lettres</strong><span id="pctVal">30%</span></div>
+    <input type="range" id="percent" min="0" max="100" step="5" value="30">
+    <p class="lvl-desc" style="margin-left:0;">% des lettres/sons transformés.</p>
+    <label class="chk"><input type="checkbox" id="groupLetters"> Lettres identiques ensemble</label>
+    <p class="lvl-desc">dans un mot, une lettre choisie est changée partout (plus facile à suivre)</p>
+  </div>
+  <div id="wordsPct">
+    <div class="row"><strong>Intensité des mots</strong><span id="pctWordsVal">100%</span></div>
+    <input type="range" id="percentWords" min="0" max="100" step="5" value="100">
+    <p class="lvl-desc" style="margin-left:0;">% des mots &amp; phrases connus traduits.</p>
+  </div>
+
+  <hr>
+  <strong style="font-size:12px;color:#6b7280;text-transform:uppercase;">Révéler la traduction</strong>
+  <select id="reveal" style="margin-top:6px;">
+    <option value="hover">Au survol de la souris</option>
+    <option value="alt">En maintenant la touche Alt</option>
+  </select>
+
+  <p class="hint">Survole un mot orange : une bulle montre le mot d'origine + la prononciation.<br>
+  <b>Astuce :</b> recharge la page si rien ne change.</p>
+</div>
+<script src="popup.js"></script>
+</body>
+</html>

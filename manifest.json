@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Lang Trainer — apprends le russe ou le japonais en naviguant",
+  "version": "1.1.0",
+  "description": "Transforme les pages web en russe ou japonais par niveaux (lettres/sons, mots, phrases), pourcentages réglables et bulles explicatives.",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Russe Trainer"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["dico.js", "content.js"],
+      "css": ["content.css"],
+      "run_at": "document_idle"
+    }
+  ]
+}
